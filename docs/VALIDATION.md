@@ -13,6 +13,10 @@ Omarchy 4.0.5-1; Quickshell 0.3.2 (Omarchy build); Hyprland 0.56.2; Qt 6.12.0; S
 - The packaged Qt 6 SDDM theme stayed running through a four-second offscreen test-mode check; no real login was attempted.
 - Preview assets show an empty password field and contain no wallpaper or account-name labels.
 - The installed host recognizes the clone declaration and inherits the source lock's authentication-service isolation.
+- The packaged service instantiated successfully in a standalone Quickshell process with the real Omarchy imports. No lock was requested; wake, brightness, session-state, and service commands were stubbed for this smoke check.
+- Package metadata, documentation links, GIF structure, and all documented shell-command syntax passed local preflight checks.
+- The SDDM installation recipe was exercised against a disposable filesystem and correctly refused an existing destination.
+- A local-only run of the official marketplace static rules reported no findings and required review for `service-management`. Snapshot reads were served from local Git; this is not a public marketplace validation or approval.
 
 These checks establish structure, source behavior, and appearance, not fresh-install authentication.
 
