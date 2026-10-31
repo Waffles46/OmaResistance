@@ -29,7 +29,7 @@ Animated green character rain, a dotted skull centerpiece, and matching login an
 
 Prepared against **Omarchy 4.0.5-1**, **Quickshell 0.3.2**, **Hyprland 0.56.2**, **Qt 6.12**, and **SDDM 0.21.0**. Other versions have not been verified.
 
-The lock plugin requires Omarchy's Quickshell shell, its `qs.Commons` and `qs.Ui` modules, Wayland session locking, PAM, and the existing `/etc/pam.d/omarchy-lock-password` configuration. It uses `bash`, `readlink`, `busctl`, `systemctl`, and Omarchy's wake, brightness, and session-status helpers. Fingerprint support additionally requires Omarchy's fingerprint PAM configuration, `fprintd`, and an enrolled fingerprint.
+The lock plugin requires Omarchy's Quickshell shell, its `qs.Commons` and `qs.Ui` modules, Wayland session locking, PAM, and the existing `/etc/pam.d/omarchy-lock-password` configuration. It uses `bash`, `readlink`, `busctl`, `systemctl`, and Omarchy's wake, brightness, and session-status helpers, including `omarchy-hyprland-session-lock-stranded`. Recovery expects Omarchy's normal `misc.allow_session_lock_restore` setting. Fingerprint support additionally requires Omarchy's fingerprint PAM configuration, `fprintd`, and an enrolled fingerprint.
 
 The optional login theme requires **Qt 6 SDDM**, `SddmComponents`, and **JetBrainsMono Nerd Font**. It uses SDDM's last selected user and session and does not provide user or session selectors.
 

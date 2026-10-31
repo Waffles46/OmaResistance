@@ -79,8 +79,10 @@ Item {
   }
 
   // ext-session-lock outlives its client, and a restart carries no lock over, so
-  // a session locked this early is an orphan behind Hyprland's failsafe. Outputs
-  // are often still absent here, so ask until the answer means something.
+  // a session locked this early may be an orphan behind Hyprland's failsafe. It
+  // may also be another shell's live lock, which must not be taken over. The
+  // upstream helper leaves that case undetermined while another locker runs.
+  // Outputs may still be absent here, so ask until the answer means something.
   function checkStrandedLock() {
     if (strandedLockResolved || strandedLockCheckProc.running) return
 
@@ -424,7 +426,8 @@ Item {
 
   Process {
     id: strandedLockCheckProc
-    command: ["bash", "-c", "omarchy-hyprland-session-locked"]
+    // Skip this Quickshell process when checking for another live locker.
+    command: ["bash", "-c", "omarchy-hyprland-session-lock-stranded \"$PPID\""]
     onExited: function(exitCode) {
       // No output to read the lock off yet.
       if (exitCode === 2) return
