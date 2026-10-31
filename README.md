@@ -37,7 +37,7 @@ The optional login theme requires **Qt 6 SDDM**, `SddmComponents`, and **JetBrai
 
 Use an **unlocked session**. Back up `~/.config/omarchy/shell.json`, note any existing custom lock, and review the [installation and rollback guide](docs/INSTALL.md).
 
-After this repository is published:
+Install from the public repository:
 
 ```sh
 omarchy plugin add https://github.com/Waffles46/OmaResistance
