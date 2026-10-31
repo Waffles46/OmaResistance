@@ -18,29 +18,39 @@ Omarchy 4.0.5-1; Quickshell 0.3.2 (Omarchy build); Hyprland 0.56.2; Qt 6.12.0; S
 - The SDDM installation recipe was exercised against a disposable filesystem and correctly refused an existing destination.
 - A local-only run of the official marketplace static rules reported no findings and required review for `service-management`. Snapshot reads were served from local Git; this is not a public marketplace validation or approval.
 
-These checks establish structure, source behavior, and appearance, not fresh-install authentication.
+## Isolated integration results
+
+On 2026-10-31, the package was installed through the standard Omarchy CLI from a local Git snapshot into a fresh, separate home/profile. The test used a nested headless compositor, private user/group databases and PAM configuration, synthetic credentials, and no connection to the host display, bus, home, physical input, or KMS devices. System power and brightness actions were disabled in the test environment.
+
+All 13 integration checks passed. This exercises real Wayland session locking and real PAM conversations with a controlled policy; it does not test the user's production password backend, fingerprint hardware, or physical sleep/display devices. See [TEST-RESULTS.json](TEST-RESULTS.json) for source hashes, outcomes, and limits.
+
+The draft's stranded-lock check was restored to Omarchy's upstream `omarchy-hyprland-session-lock-stranded` helper, which defers recovery while another locker is alive. Crash recovery was checked with Omarchy's normal `misc.allow_session_lock_restore = true` setting. The compositor stayed locked after the client was killed; the restarted service re-established the lock and required successful authentication to unlock.
+
+For SDDM, the packaged `Main.qml` matches the existing installed login theme byte for byte. The current boot's SDDM journal records loading that theme and a successful authentication/session start on 2026-10-28, after the matching source was installed. This establishes a real login with that QML on the preparation machine, not a fresh installation or rollback test of the renamed package.
 
 ## Real-session checks before publication
 
 Use a disposable Omarchy installation with a working TTY and saved shell configuration. Record versions, dates, and outcomes without recording passwords.
 
-- [ ] Install into a clean profile and verify the service and imports load.
-- [ ] Verify only one custom lock is enabled and normal lock calls reach it.
-- [ ] Open and dismiss the visual preview.
-- [ ] Lock and confirm the compositor establishes a secure session lock.
-- [ ] Verify an incorrect password keeps the session locked with visible feedback.
-- [ ] Verify Escape/Ctrl+U clearing and long-password dot fitting.
-- [ ] Verify a correct password unlocks the session.
+- [x] Install into a clean isolated profile from the local Git snapshot and verify the service/imports load.
+- [x] Verify the custom lock is enabled and normal lock calls reach it in that profile.
+- [x] Open and dismiss the non-locking visual preview.
+- [x] Lock and confirm the compositor establishes a secure session lock.
+- [x] Verify a rejected synthetic PAM password keeps the session locked with visible feedback.
+- [x] Verify Escape/Ctrl+U clearing and a 200-character password.
+- [x] Verify the correct synthetic PAM password unlocks the session.
 - [ ] Test an enrolled fingerprint and password fallback, or record fingerprint support as unavailable.
 - [ ] Test blank/wake and suspend/resume without revealing the desktop while locked.
-- [ ] Test output hotplug and multiple monitors; every active output must stay covered.
-- [ ] Disable/remove while unlocked and restore the previous lock.
-- [ ] Verify recovery from a failed lock client in the disposable environment.
+- [x] Add a second headless output while locked, preserve secure state, and unlock with both outputs active.
+- [ ] Verify physical monitor coverage and hotplug on target hardware.
+- [x] Disable/remove while unlocked and restore the built-in lock in the isolated profile.
+- [x] Verify recovery from a killed lock client and successful authentication after restart.
 
 ## SDDM checks before publication
 
 - [ ] Verify Qt modules and fonts are available to the `sddm` account.
-- [ ] Verify a real login for the remembered user/session.
+- [x] Confirm a real login on the existing installation using identical `Main.qml` (2026-10-28 journal evidence).
+- [ ] Verify a fresh installation of this renamed SDDM package.
 - [ ] Verify wrong-password feedback and retry.
 - [ ] Confirm the last-user/session limitation is acceptable.
 - [ ] Verify TTY rollback restores the previous greeter.

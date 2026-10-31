@@ -1,0 +1,144 @@
+{
+  "date": "2026-10-31",
+  "tested_runtime_commit": "363404c21bdee02d89621a8d734037c13732e9d8",
+  "runtime_source_sha256": {
+    "Service.qml": "f0555b439e44d72f8726954954fc3530c51d1417817f809754bc74dd69ae6a69",
+    "LockView.qml": "6933661b400aae9be711ef39cbe58a2a6c73c55ab9aee5a8054ca19c8dfb34b0",
+    "PowerMenu.qml": "58ad74554f255131c24c0e0b41a5bf737a17422bcfc2e7fde1d3005dff19120b",
+    "sddm-theme/Main.qml": "85a057d14115c9db6d2924c0599a5fa5d833d7557dd245884307902aad6148a3"
+  },
+  "environment": {
+    "omarchy": "4.0.5-1",
+    "quickshell": "0.3.2",
+    "hyprland": "0.56.2",
+    "pam": "private pam_exec fixture",
+    "display": "separate headless compositor, one/two outputs"
+  },
+  "isolated_integration": {
+    "passed": true,
+    "checks": [
+      {
+        "test": "isolation",
+        "passed": true,
+        "evidence": {
+          "host_display_connected": false,
+          "host_bus_connected": false,
+          "physical_input": false,
+          "kms_devices": false
+        }
+      },
+      {
+        "test": "standard_install_and_enable",
+        "passed": true,
+        "evidence": {
+          "source": "local Git snapshot",
+          "plugin": "waffles46.omaresistance"
+        }
+      },
+      {
+        "test": "preview_is_nonlocking",
+        "passed": true,
+        "evidence": {
+          "locked": false
+        }
+      },
+      {
+        "test": "real_wayland_lock",
+        "passed": true,
+        "evidence": {
+          "locked": true,
+          "sessionLocked": true,
+          "secure": true,
+          "realScreens": 1
+        }
+      },
+      {
+        "test": "upstream_live_locker_guard",
+        "passed": true,
+        "evidence": {
+          "another_locker_detected": true,
+          "recovery_deferred": true
+        }
+      },
+      {
+        "test": "pam_wrong_password_stays_locked",
+        "passed": true,
+        "evidence": {
+          "pam_rejected": true,
+          "secure": true
+        }
+      },
+      {
+        "test": "pam_valid_password_unlock_and_escape_clear",
+        "passed": true,
+        "evidence": {
+          "locked": false,
+          "credentials": "synthetic fixture only"
+        }
+      },
+      {
+        "test": "control_u_clear",
+        "passed": true,
+        "evidence": {
+          "locked": false
+        }
+      },
+      {
+        "test": "locked_output_hotplug",
+        "passed": true,
+        "evidence": {
+          "realScreens": 2,
+          "secure": true
+        }
+      },
+      {
+        "test": "unlock_with_multiple_outputs",
+        "passed": true,
+        "evidence": {
+          "locked": false
+        }
+      },
+      {
+        "test": "long_password_input",
+        "passed": true,
+        "evidence": {
+          "length": 200,
+          "locked": false
+        }
+      },
+      {
+        "test": "lock_client_crash_recovery",
+        "passed": true,
+        "evidence": {
+          "compositor_stayed_locked": true,
+          "authenticated_after_restart": true
+        }
+      },
+      {
+        "test": "disable_remove_restore_builtin",
+        "passed": true,
+        "evidence": {
+          "builtin_enabled": true,
+          "custom_removed": true
+        }
+      }
+    ],
+    "limits": [
+      "Synthetic PAM fixture; no account password or fingerprint tested.",
+      "Headless monitors; no physical hotplug, suspend, or SDDM login tested."
+    ]
+  },
+  "existing_sddm_login": {
+    "same_main_qml": true,
+    "successful_login_after_source_written": true,
+    "main_qml_sha256": "85a057d14115c9db6d2924c0599a5fa5d833d7557dd245884307902aad6148a3",
+    "authentication_utc": [
+      "2026-10-28T06:32:23.258865+00:00"
+    ]
+  },
+  "limitations": [
+    "No production-account password or fingerprint was used in the isolated suite.",
+    "No physical display hotplug, suspend/resume, or new SDDM system installation was performed.",
+    "The SDDM evidence concerns an existing installation of identical Main.qml, not a fresh installation of this renamed package."
+  ]
+}

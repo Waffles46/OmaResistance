@@ -80,11 +80,13 @@ The login theme is a separate SDDM component. Preview it from a local checkout:
 sddm-greeter-qt6 --test-mode --theme ./sddm-theme
 ```
 
-Use the [SDDM setup and rollback guide](docs/SDDM.md) for system installation. Installing the Omarchy plugin does not select a system greeter. A real display-manager login remains a release check.
+Use the [SDDM setup and rollback guide](docs/SDDM.md) for system installation. Installing the Omarchy plugin does not select a system greeter. The same login QML has completed a real SDDM login on the preparation machine; a fresh installation and rollback of this renamed package remain unverified.
 
 ## Validation status
 
-This is a pre-release package. Manifest validation and visual previews have been checked; password/fingerprint unlocking, suspend/resume, multiple outputs, and a real SDDM login remain release checks. See [validation notes](docs/VALIDATION.md) for results and limits.
+This is a pre-release package. A fresh isolated Omarchy session passed installation, secure Wayland locking, PAM rejection/unlock with synthetic credentials, Escape/Ctrl+U clearing, a 200-character password, headless-output hotplug, crash recovery, and removal. Existing-system records also confirm a real SDDM login using identical login QML.
+
+Fingerprint hardware, physical monitor hotplug, suspend/resume, and a fresh SDDM installation/rollback remain unverified. See [validation notes](docs/VALIDATION.md) and the [test results](docs/TEST-RESULTS.json) for the exact scope.
 
 ## License and credits
 
