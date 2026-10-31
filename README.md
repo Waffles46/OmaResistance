@@ -92,6 +92,6 @@ Fingerprint hardware, physical monitor hotplug, suspend/resume, and a fresh SDDM
 
 Code and original contributions use the [MIT license](LICENSE), with the original [Omarchy notice](OMARCHY-LICENSE) retained. The lock service is adapted from Omarchy's `omarchy.lock`.
 
-The skull was supplied from the author's existing design. Redistribution permission is awaiting owner confirmation before publication; see [credits and asset provenance](CREDITS.md).
+The skull was sourced from [EmojiCombos — Skull ASCII Art](https://emojicombos.com/skull-ascii-art), as identified by the maintainer. Its original artist and reuse license have not yet been verified; see [credits and asset provenance](CREDITS.md).
 
 By **Waffles46 and Omarchy contributors**. This is a community project, unaffiliated with the owners of the Matrix or Star Trek franchises.

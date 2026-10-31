@@ -58,7 +58,8 @@ Use a disposable Omarchy installation with a working TTY and saved shell configu
 
 ## Publishing checks
 
-- [ ] Owner confirms the exact skull artwork's redistribution permission and attribution.
+- [x] Record the maintainer-identified skull source: [EmojiCombos — Skull ASCII Art](https://emojicombos.com/skull-ascii-art).
+- [ ] Verify the exact skull artwork's redistribution permission and any required artist credit.
 - [ ] Owner approves MIT for original contributions and the final README/previews.
 - [ ] The public repository exists and matches the reviewed package.
 - [ ] Owner reviews the submission and confirms all five required statements.

@@ -12,7 +12,9 @@ Packaging, documentation, login-theme customization, and preview recordings are 
 
 ## Skull artwork
 
-The braille-character skull is retained from the author's existing login/lock design. The original source and redistribution permission have not yet been established in this preparation copy. The upstream license alone is not evidence of permission for separately supplied artwork. Owner confirmation or an attributable source is required before public release.
+The braille-character skull is retained from the author's existing login/lock design. The maintainer identified [EmojiCombos — Skull ASCII Art](https://emojicombos.com/skull-ascii-art) as its source.
+
+The original artist and an explicit reuse license for this exact artwork have not yet been verified. Credit to the source does not establish redistribution permission, and the project's MIT license does not establish a license for this third-party artwork. This remains an open item for the marketplace's ownership/permission statement.
 
 The skull appears in both QML views, `preview.png`, and the two recordings. It has not been replaced or reshaped.
 
