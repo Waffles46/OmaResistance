@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "waffles46.omaresistance",
+  "name": "OmaResistance",
+  "version": "0.1.0",
+  "author": "Waffles46 and Omarchy contributors",
+  "description": "Matrix-inspired login and lock screens for Omarchy with animated green character rain.",
+  "kinds": [
+    "service"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml"
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.lock"
+  }
+}

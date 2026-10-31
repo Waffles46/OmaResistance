@@ -1,0 +1,7 @@
+# Local review pages, recordings, and submission drafts.
+previews/
+
+# Generated archives and tool caches.
+dist/
+__pycache__/
+*.pyc

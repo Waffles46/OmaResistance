@@ -1,0 +1,7 @@
+[SddmGreeterTheme]
+Name=OmaResistance
+Description=Matrix-inspired login screen with animated green character rain for Omarchy
+Author=Waffles46
+Type=sddm-theme
+Version=0.1.0
+QtVersion=6
